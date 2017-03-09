@@ -15,12 +15,11 @@ RUN wget https://bitbucket.org/squeaky/portable-pypy/downloads/${PYPY}.tar.bz2; 
     wget https://bootstrap.pypa.io/get-pip.py
 
 RUN tar -xjf ${PYPY}.tar.bz2; \
-    cp -rp ${PYPY} /usr/lib/pypy; \
-    ln -s /usr/lib/pypy/bin/pypy /usr/local/bin/pypy; \
-    ln -s /usr/lib/pypy/bin/libpypy-c.so /usr/lib/libpypy-c.so
+    cp -rp ${PYPY} /usr/lib/pypy
 
-RUN pypy get-pip.py; \
-    ln -s /usr/lib/pypy/bin/pip /usr/local/bin/pip-pypy
+RUN /usr/lib/pypy/bin/pypy get-pip.py; \
+    ln -s /usr/lib/pypy/lib/* /usr/lib/; \
+    ln -s /usr/lib/pypy/bin/* /usr/local/bin/
 
 RUN apt-get purge wget \
     bzip2 \
