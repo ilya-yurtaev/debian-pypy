@@ -19,7 +19,8 @@ RUN tar -xjf ${PYPY}.tar.bz2; \
 
 RUN /usr/lib/pypy/bin/pypy get-pip.py; \
     ln -s /usr/lib/pypy/lib/* /usr/lib/; \
-    ln -s /usr/lib/pypy/bin/* /usr/local/bin/
+    ln -s /usr/lib/pypy/bin/* /usr/local/bin/; \
+    ln -s /usr/lib/pypy/bin/libpypy-c.so /usr/lib/libpypy-c.so  # wtf
 
 RUN apt-get purge wget \
     bzip2 \
