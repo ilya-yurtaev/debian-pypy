@@ -16,7 +16,8 @@ RUN wget https://bitbucket.org/squeaky/portable-pypy/downloads/${PYPY}.tar.bz2; 
 
 RUN tar -xjf ${PYPY}.tar.bz2; \
     cp -rp ${PYPY} /usr/lib/pypy; \
-    ln -s /usr/lib/pypy/bin/pypy /usr/local/bin/pypy
+    ln -s /usr/lib/pypy/bin/pypy /usr/local/bin/pypy; \
+    ln -s /usr/lib/pypy/bin/libpypy-c.so /usr/local/bin/libpypy-c.so
 
 RUN pypy get-pip.py; \
     ln -s /usr/lib/pypy/bin/pip /usr/local/bin/pip-pypy
